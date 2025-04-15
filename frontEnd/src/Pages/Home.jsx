@@ -13,6 +13,7 @@ function Home(){
     const handldSearch = (e) =>{
         e.preventDefault();
         alert(searchQuery);
+        setSearchQuery("----");
     }
 
     return <div className="home">
@@ -27,7 +28,8 @@ function Home(){
         </form>
 
         <div className="movies-grid">
-            {movies.map(movie => <MovieCard movie={movie} key={movie.id}/>)}
+            {movies.map(movie => 
+            movie.title.toLowerCase().startsWith(searchQuery) && <MovieCard movie={movie} key={movie.id}/>)}
         </div>
     </div>
 }
